@@ -26,4 +26,9 @@ public class Recipe {
     private Byte[] image;
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+    @ManyToMany
+    @JoinTable(name="recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "categroy_id"))
+    private Set<Category> categories;
 }
