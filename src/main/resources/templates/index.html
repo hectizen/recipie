@@ -5,6 +5,25 @@
     <title>Recipe</title>
 </head>
 <body>
-<h1 th:text="'Recipe Index 12367'"></h1>
+<!--/*@thymesVar id="owner" type="com.hj.recipe.domain.Recipe"*/-->
+<h2 th:text="'List of Recipes'">Index Page</h2>
+<table id="recipes" class="table table-stripped">
+    <thead>
+    <th style="width: 150px;">Id</th>
+    <th style="width: 200px;">Description</th>
+    <th style="width: 120px;">Cook Time</th>
+    <th style="width: 120px;">Difficulty</th>
+    </thead>
+    <tbody>
+    <tr th:each="recipe : ${recipes}">
+        <td th:text="${recipe.Id}"></td>
+        <td th:text="${recipe.description}"></td>
+        <td th:text="${recipe.cookTime}"></td>
+        <td th:text="${recipe.difficulty}"></td>
+
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

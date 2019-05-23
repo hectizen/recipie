@@ -1,12 +1,15 @@
 package com.hj.recipe.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Data
+@EqualsAndHashCode(of = {"id"})
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,4 +34,25 @@ public class Recipe {
             joinColumns = @JoinColumn(name = "recipe_id"),
             inverseJoinColumns = @JoinColumn(name = "categroy_id"))
     private Set<Category> categories;
+
+    public void addNotes(Notes notes){
+        if(notes != null) notes.setRecipie(this);
+        this.notes = notes;
+    }
+
+    public void addIngredient(Ingredient ingredient){
+        if(this.ingredients == null)
+            this.ingredients = new HashSet<>();
+        if(ingredient != null){
+            ingredient.setRecipe(this);
+            this.ingredients.add(ingredient);
+        }
+    }
+
+    public void addCategory(Category category){
+        if(this.categories == null)
+            this.categories = new HashSet<>();
+        if(category == null) return;
+        this.categories.add(category);
+     }
 }
