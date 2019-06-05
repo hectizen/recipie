@@ -5,21 +5,25 @@ import com.hj.recipe.repository.CategoryRepository;
 import com.hj.recipe.repository.RecipeRepository;
 import com.hj.recipe.repository.UnitOfMeasureRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class DataLoader implements CommandLineRunner {
     private RecipeRepository recipeRepository;
     private CategoryRepository categoryRepository;
     private UnitOfMeasureRepository unitOfMeasureRepository;
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         loadData();
     }

@@ -1,14 +1,13 @@
 package com.hj.recipe.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
 @Data
-@EqualsAndHashCode(of = {"id"})
+@Entity
+@EqualsAndHashCode(exclude = {"recipes"})
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,4 +16,8 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
+
+    public Category() {
+    }
+
 }

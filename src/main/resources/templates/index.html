@@ -3,27 +3,55 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Recipe</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"/>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+            th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </head>
 <body>
 <!--/*@thymesVar id="owner" type="com.hj.recipe.domain.Recipe"*/-->
-<h2 th:text="'List of Recipes'">Index Page</h2>
-<table id="recipes" class="table table-stripped">
-    <thead>
-    <th style="width: 150px;">Id</th>
-    <th style="width: 200px;">Description</th>
-    <th style="width: 120px;">Cook Time</th>
-    <th style="width: 120px;">Difficulty</th>
-    </thead>
-    <tbody>
-    <tr th:each="recipe : ${recipes}">
-        <td th:text="${recipe.Id}"></td>
-        <td th:text="${recipe.description}"></td>
-        <td th:text="${recipe.cookTime}"></td>
-        <td th:text="${recipe.difficulty}"></td>
+<div class="container-fluid" style="margin-top: 40px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h2 class="panel-title" th:text="'List of Recipes'">My recipe</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responive" th:if="${not #lists.isEmpty(recipes)}">
+                        <table id="recipes" class="table table-hover">
+                            <thead class="thead-inverse">
+                            <th style="width: 150px;">Id</th>
+                            <th style="width: 200px;">Description</th>
+                            <th style="width: 120px;">Cook Time</th>
+                            <th style="width: 120px;">Difficulty</th>
+                            </thead>
+                            <tbody>
+                            <tr th:each="recipe : ${recipes}">
+                                <td th:text="${recipe.id}">123</td>
+                                <td th:text="${recipe.description}">description</td>
+                                <td th:text="${recipe.cookTime}">30</td>
+                                <td th:text="${recipe.difficulty}">Medium</td>
 
-    </tr>
-    </tbody>
-</table>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
