@@ -5,7 +5,8 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
+@Setter
+@Getter
 @Entity
 @EqualsAndHashCode(exclude = {"recipes"})
 public class Category {
@@ -19,5 +20,4 @@ public class Category {
 
     public Category() {
     }
-
 }
