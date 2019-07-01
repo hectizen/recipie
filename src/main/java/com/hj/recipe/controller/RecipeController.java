@@ -2,7 +2,6 @@ package com.hj.recipe.controller;
 
 import com.hj.recipe.command.RecipeCommand;
 import com.hj.recipe.service.RecipeService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
