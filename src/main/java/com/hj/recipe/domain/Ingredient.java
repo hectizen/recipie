@@ -11,6 +11,9 @@ import java.math.BigDecimal;
 @Setter
 @EqualsAndHashCode(exclude = {"recipe"})
 @Entity
+@Table(uniqueConstraints={
+        @UniqueConstraint(columnNames = {"description", "amount", "uom_id"})
+})
 public class Ingredient {
 
     @Id
