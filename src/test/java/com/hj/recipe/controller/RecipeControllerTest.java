@@ -2,6 +2,7 @@ package com.hj.recipe.controller;
 
 import com.hj.recipe.command.RecipeCommand;
 import com.hj.recipe.domain.Recipe;
+import com.hj.recipe.exceptions.NotFoundException;
 import com.hj.recipe.service.RecipeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -90,6 +91,19 @@ public class RecipeControllerTest {
 
     @Test
     public void testDeleteAction() throws Exception{
+        mockMvc.perform(get("/recipe/1/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/"));
 
+        verify(recipeService,times(1)).deleteById(anyLong());
+    }
+
+    @Test
+    public void testRecipeNotFound() throws Exception{
+        when(recipeService.findById(anyLong())).thenThrow(NotFoundException.class);
+
+        mockMvc.perform(get("/recipe/3/show"))
+                .andExpect(status().isNotFound())
+                .andExpect(view().name("404Error"));
     }
 }

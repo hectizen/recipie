@@ -1,10 +1,13 @@
 package com.hj.recipe.controller;
 
 import com.hj.recipe.command.RecipeCommand;
+import com.hj.recipe.exceptions.NotFoundException;
 import com.hj.recipe.service.RecipeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 //@AllArgsConstructor
@@ -48,5 +51,13 @@ public class RecipeController {
     public String deleteRecipe(@PathVariable String id){
         recipeService.deleteById(Long.parseLong(id));
         return "redirect:/";
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public ModelAndView handleNotFoundException(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("404Error");
+        return modelAndView;
     }
 }
