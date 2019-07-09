@@ -15,7 +15,7 @@
     <description>Recipe project</description>
 
     <properties>
-        <java.version>12</java.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -71,10 +71,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
+            <!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M3</version>
+                <artifactId>maven-failsafe-plugin</artifactId-->
+                <!--version>3.0.0-M3</version-->
                 <!--configuration>
                     <includes>
                         <include>**/*IT.java</include>
@@ -84,7 +84,7 @@
                     </additionalClasspathElements>
                     <parallel>none</parallel>
                 </configuration-->
-                <executions>
+                <!--executions>
                     <execution>
                         <goals>
                             <goal>integration-test</goal>
@@ -92,7 +92,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
         </plugins>
     </build>
 
