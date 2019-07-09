@@ -70,29 +70,23 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!--plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId-->
-                <!--version>3.0.0-M3</version-->
-                <!--configuration>
-                    <includes>
-                        <include>**/*IT.java</include>
-                    </includes>
-                    <additionalClasspathElements>
-                        <additionalClasspathelement>${basedir}/target/classes</additionalClasspathelement>
-                    </additionalClasspathElements>
-                    <parallel>none</parallel>
-                </configuration-->
-                <!--executions>
+                <executions>
                     <execution>
                         <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
+                            <goal>repackage</goal>
                         </goals>
+                        <!--configuration>
+                            <skip>true</skip>
+                        </configuration-->
                     </execution>
                 </executions>
-            </plugin-->
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
