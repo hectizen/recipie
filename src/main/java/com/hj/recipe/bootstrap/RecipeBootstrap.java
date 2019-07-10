@@ -20,8 +20,8 @@ import static com.hj.recipe.domain.Difficulty.*;
 
 @Slf4j
 @Component
-public class RecipeBootstrap implements CommandLineRunner {
-//public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
+//public class RecipeBootstrap implements CommandLineRunner {
+public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
@@ -35,8 +35,8 @@ public class RecipeBootstrap implements CommandLineRunner {
 
     @Override
     @Transactional
-    public void run (String... args) throws Exception {
-    //public void onApplicationEvent(ContextRefreshedEvent event) {
+    //public void run (String... args) throws Exception {
+    public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
         log.debug("Loading Bootstrap Data");
     }
