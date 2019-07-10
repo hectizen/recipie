@@ -5,6 +5,7 @@ import com.hj.recipe.repository.CategoryRepository;
 import com.hj.recipe.repository.RecipeRepository;
 import com.hj.recipe.repository.UnitOfMeasureRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,8 @@ import static com.hj.recipe.domain.Difficulty.*;
 
 @Slf4j
 @Component
-public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
+public class RecipeBootstrap implements CommandLineRunner {
+//public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
@@ -33,7 +35,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
     @Override
     @Transactional
-    public void onApplicationEvent(ContextRefreshedEvent event) {
+    public void run (String... args) throws Exception {
+    //public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
         log.debug("Loading Bootstrap Data");
     }
